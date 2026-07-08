@@ -63,7 +63,10 @@ export function AccountProfile({ customer }: AccountProfileProps) {
               const lineItems = order.lineItems.edges.map((edge) => edge.node)
 
               return (
-                <article key={order.id} className="bg-secondary p-4 sm:p-5">
+                <article
+                  key={order.id}
+                  className="border border-primary bg-secondary p-4 sm:p-5"
+                >
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="text-sm font-semibold">{order.name}</p>
