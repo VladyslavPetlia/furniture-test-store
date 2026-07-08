@@ -1,19 +1,42 @@
-import { Button } from "@/components/ui/button"
+import CollectionsCarousel from "@/components/web/collections-carousel/collections-carousel"
+import Hero from "@/components/web/hero-image"
+import Footer from "@/components/web/layout/footer"
+import { Suspense } from "react"
+import { FilterCarouselListSkeleton } from "@/components/web/skeletons/collections-carousel-skeleton"
+import { HeroSkeleton } from "@/components/web/skeletons/hero-skeleton"
+import { InspirationCarousel } from "@/components/web/inspiration-carousel"
+import { HomepageGrid } from "@/components/web/homepage-grid"
+import Grid from "@/components/web/grid"
 
-export default function Page() {
+export const metadata = {
+  description:
+    "High-performance ecommerce store built with Next.js, Vercel, and Shopify.",
+  openGraph: {
+    type: "website",
+  },
+}
+
+export default function Home() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <>
+      <Suspense fallback={<HeroSkeleton />}>
+        <Hero />
+      </Suspense>
+      <Suspense fallback={<FilterCarouselListSkeleton hasTitle={true} />}>
+        <div style={{ contain: "layout paint" }}>
+          <CollectionsCarousel />
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+      </Suspense>
+      <Suspense>
+        <InspirationCarousel />
+      </Suspense>
+      <Suspense>
+        <Grid className="mx-auto mt-40 mb-40 max-w-7xl grid-cols-1 px-5 sm:grid-cols-2 lg:grid-cols-4">
+          <HomepageGrid />
+        </Grid>
+      </Suspense>
+
+      <Footer />
+    </>
   )
 }
