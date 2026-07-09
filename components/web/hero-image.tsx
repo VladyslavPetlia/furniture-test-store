@@ -7,10 +7,10 @@ export default function Hero() {
       <div className="relative">
         <div className="relative h-full w-full pb-100 md:pb-0">
           <Image
-            src="/hero.jpg"
+            src="/hero.webp"
             alt="Decorated room image"
-            width={2000}
-            height={1000}
+            width={1000}
+            height={500}
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100wv" // Tells the browser exactly how small the box is

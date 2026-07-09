@@ -24,7 +24,7 @@ export default function Search() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          aria-label="Search"
+          aria-label="Open search menu"
           variant="outline"
           className="size-8 ring-1 ring-transparent hover:ring-primary"
         >
@@ -40,6 +40,7 @@ export default function Search() {
             <InputGroup>
               <InputGroupInput
                 id="inline-start-input"
+                aria-label="Search items" // Ensures the input field itself is accessible
                 placeholder="Search..."
                 key={searchParams?.get("q")}
                 type="text"

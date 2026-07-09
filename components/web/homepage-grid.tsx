@@ -29,6 +29,7 @@ export async function HomepageGrid() {
               }}
               src={product.featuredImage?.url}
               fill
+              quality={70}
               sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
             />
           </Link>

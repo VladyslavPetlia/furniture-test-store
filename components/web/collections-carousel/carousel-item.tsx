@@ -28,7 +28,8 @@ function PathFilterItem({ item }: { item: ListCarouselItem }) {
           src={item.image}
           alt=""
           fill
-          sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+          quality={70}
+          sizes="(min-width: 768px) 33vw, 50vw"
           className="object-cover transition-all hover:scale-105"
         />
       </Link>
