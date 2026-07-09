@@ -29,7 +29,7 @@ function PathFilterItem({ item }: { item: ListCarouselItem }) {
           alt=""
           fill
           quality={70}
-          sizes="(min-width: 768px) 33vw, 50vw"
+          sizes="(min-width: 1280px) 300px, (min-width: 1024px) 33vw, (min-width: 768px) 430px, (min-width: 640px) 50vw, 100vw"
           className="object-cover transition-all hover:scale-105"
         />
       </Link>

@@ -63,7 +63,7 @@ export async function InspirationCarousel() {
                         alt={img.altText}
                         fill
                         quality={70}
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        sizes="(min-width: 1280px) 300px, (min-width: 1024px) 33vw, (min-width: 768px) 430px, (min-width: 640px) 50vw, 100vw"
                         className="object-cover transition-all group-hover:scale-105"
                         priority={index < 2}
                         loading={index >= 2 ? "lazy" : undefined}

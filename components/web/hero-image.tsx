@@ -7,14 +7,15 @@ export default function Hero() {
       <div className="relative">
         <div className="relative h-full w-full pb-100 md:pb-0">
           <Image
-            src="/hero.webp"
             alt="Decorated room image"
-            width={1000}
-            height={500}
-            priority
+            src="/hero.webp"
+            width={1335}
+            height={751}
+            quality={75}
+            priority // High priority preloading for LCP
             fetchPriority="high"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100wv" // Tells the browser exactly how small the box is
             className="h-auto w-full max-w-500 object-cover"
+            sizes="(min-width: 1340px) 1335px, 100vw"
           />
           <div className="absolute top-[60%] left-[50%] max-w-150 translate-x-[-50%] bg-[#46edd5] p-8 md:top-[50%] md:translate-x-0 md:translate-y-[-50%]">
             <h1 className="w-80 text-3xl font-bold text-primary uppercase md:text-4xl lg:w-115 lg:text-5xl xl:w-145 xl:text-6xl">

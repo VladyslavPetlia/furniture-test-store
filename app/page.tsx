@@ -12,6 +12,7 @@ import HeroSkeleton from "@/components/web/skeletons/hero-skeleton"
 import FilterCarouselListSkeleton from "@/components/web/skeletons/collections-carousel-skeleton"
 import InspirationCarouselSkeleton from "@/components/web/skeletons/insperation-carousel-skeleton"
 import HomepageGridSkeleton from "@/components/web/skeletons/homepage-grid-skeleton"
+import MainButton from "@/components/web/main-button"
 
 export const metadata = {
   description:
@@ -46,13 +47,8 @@ export default function Home() {
         <Grid className="mx-auto mt-10 mb-10 max-w-7xl grid-cols-1 px-5 sm:grid-cols-2 lg:grid-cols-4">
           <HomepageGrid />
         </Grid>
-        <div className="flex items-center justify-center">
-          <Link
-            href={"/search"}
-            className={clsx(buttonVariants({}), "mb-26 px-8 py-6 text-lg")}
-          >
-            <p className="text-lg">See More</p>
-          </Link>
+        <div className="mb-25 flex items-center justify-center">
+          <MainButton text="See More" />
         </div>
       </Suspense>
 

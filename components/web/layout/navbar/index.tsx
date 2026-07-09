@@ -3,7 +3,7 @@ import { Suspense } from "react"
 import MobileMenu from "./mobile-menu"
 import Link from "next/link"
 import LogoSquare from "../../logo-square"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Menu } from "@/lib/shopify/types"
 import Search, { SearchSkeleton } from "./search"
 import { ModeToggle } from "./mode-togle"
@@ -40,14 +40,18 @@ export async function Navbar() {
           {menu.length ? (
             <div className="hidden gap-6 text-sm md:flex md:items-center">
               {menu.map((item: Menu) => (
-                <Link href={item.path} key={item.title} prefetch={true}>
-                  <Button
-                    variant="outline"
-                    className="min-w-15 cursor-pointer ring-1 ring-transparent hover:ring-primary"
-                    aria-label={item.title}
-                  >
-                    {item.title}
-                  </Button>
+                <Link
+                  href={item.path}
+                  key={item.title}
+                  aria-label={item.title}
+                  prefetch={true}
+                  className={buttonVariants({
+                    variant: "outline",
+                    className:
+                      "min-w-15 cursor-pointer ring-1 ring-transparent hover:ring-primary",
+                  })}
+                >
+                  {item.title}
                 </Link>
               ))}
             </div>

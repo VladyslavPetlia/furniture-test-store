@@ -28,7 +28,8 @@ export default function Search() {
           variant="outline"
           className="size-8 ring-1 ring-transparent hover:ring-primary"
         >
-          <SearchIcon />
+          <span className="sr-only">Search all furniture products</span>
+          <SearchIcon aria-hidden="true" />
         </Button>
       </PopoverTrigger>
       <PopoverContent asChild>
