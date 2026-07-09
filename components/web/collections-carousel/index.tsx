@@ -32,9 +32,9 @@ export default function FilterCarouselList({
     <>
       <nav className="mx-auto mb-31 max-w-7xl px-4">
         {title ? (
-          <h3 className="mt-30 mb-10 text-center font-mono text-4xl text-black md:block dark:text-white">
+          <h2 className="mt-30 mb-10 text-center font-mono text-4xl text-black md:block dark:text-white">
             {title}
-          </h3>
+          </h2>
         ) : null}
         <ul className="mx-auto flex h-full w-full flex-col items-center justify-center gap-15 lg:flex-row lg:gap-0 lg:overflow-x-auto">
           <FilterItemList list={list} />

@@ -24,6 +24,7 @@ export default function Search() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
+          aria-label="Search"
           variant="outline"
           className="size-8 ring-1 ring-transparent hover:ring-primary"
         >

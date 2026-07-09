@@ -32,7 +32,7 @@ export async function Navbar() {
           >
             <LogoSquare />
             <div className="ml-2 flex-none font-mono text-lg uppercase">
-              {SITE_NAME}
+              <h1>{SITE_NAME}</h1>
             </div>
           </Link>
         </div>
