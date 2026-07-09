@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton"
 import { getBlogPost } from "@/lib/shopify"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -15,11 +16,7 @@ export default function BlogPostPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-3xl px-4 py-8">
       {/* Provides a clear loading state while dynamic parameters load */}
-      <Suspense
-        fallback={
-          <div className="h-96 w-full animate-pulse rounded-lg bg-neutral-100" />
-        }
-      >
+      <Suspense fallback={<Skeleton className="h-100 w-full" />}>
         <PostDetails params={params} />
       </Suspense>
     </main>

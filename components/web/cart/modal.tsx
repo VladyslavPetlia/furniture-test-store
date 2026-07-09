@@ -209,7 +209,7 @@ function CheckoutButton() {
 
   return (
     <Button
-      className="cursor-pointer"
+      className="cursor-pointer px-8 py-6 text-lg"
       variant="default"
       type="submit"
       disabled={pending}

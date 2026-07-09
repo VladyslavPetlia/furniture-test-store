@@ -17,11 +17,13 @@ export default async function SearchLayout(props: {
     <>
       <div className="mx-auto flex max-w-(--breakpoint-2xl) flex-col gap-8 px-4 pb-4 text-black md:flex-row dark:text-white">
         <div>
-          <Collections />
-          <Suspense fallback={<Skeleton className="h-10" />}>
+          <Suspense fallback={<Skeleton className="h-11 w-30" />}>
+            <Collections />
+          </Suspense>
+          <Suspense fallback={<Skeleton className="h-11 w-30" />}>
             <ProductFiltersSidebar searchParams={resolvedParams} />
           </Suspense>
-          <Suspense>
+          <Suspense fallback={<Skeleton className="h-11 w-30" />}>
             <FilterList list={sorting} title="Sort by" />
           </Suspense>
         </div>

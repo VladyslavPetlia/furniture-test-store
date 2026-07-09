@@ -4,6 +4,7 @@ import ProductGridItems from "@/components/web/layout/product-grid-items"
 import { defaultSort, sorting } from "@/lib/constants"
 import { getProducts } from "@/lib/shopify"
 import { parseUrlParamsToShopifyFilters } from "@/lib/shopify/filters"
+import ProductGridItemsSkeleton from "@/components/web/skeletons/product-gtrid-items-skeleton"
 
 // 1. Create a dedicated Search Results child component to handle the dynamic API query
 async function SearchResults({ searchParams }: { searchParams: Promise<any> }) {
@@ -54,13 +55,7 @@ export default async function SearchPage(props: {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   return (
-    <Suspense
-      fallback={
-        <p className="py-12 text-sm text-muted-foreground">
-          Loading products...
-        </p>
-      }
-    >
+    <Suspense fallback={<ProductGridItemsSkeleton />}>
       <SearchResults searchParams={props.searchParams!} />
     </Suspense>
   )

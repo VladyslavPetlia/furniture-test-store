@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div className="relative mx-auto max-w-(--breakpoint-2xl) overflow-hidden bg-secondary">
       <div className="relative">
-        <div className="relative mb-20 h-full w-full pb-100 md:pb-0">
+        <div className="relative h-full w-full pb-100 md:pb-0">
           <Image
             src="/hero.jpg"
             alt="Decorated room image"

@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Suspense } from "react"
 import clsx from "clsx"
 import { buttonVariants } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export const metadata = {
   title: "Our Blog",
@@ -66,11 +67,7 @@ export default function BlogPage() {
       <h1 className="mb-10 text-4xl font-bold tracking-tight text-black dark:text-neutral-100">
         Our Blog
       </h1>
-      <Suspense
-        fallback={
-          <div className="h-96 w-full animate-pulse rounded-lg bg-neutral-100" />
-        }
-      >
+      <Suspense fallback={<Skeleton className="h-100 w-full" />}>
         <BlogFeed />
       </Suspense>
     </main>

@@ -18,7 +18,9 @@ async function CollectionList() {
       products: collection.products || [], // Passed directly down
     }))
 
-  return <FilterCarouselList list={filteredCollections} />
+  return (
+    <FilterCarouselList list={filteredCollections} title="Our Collections" />
+  )
 }
 
 export default function CollectionsCarousel() {

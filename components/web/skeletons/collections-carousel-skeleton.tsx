@@ -1,26 +1,38 @@
 import { Skeleton } from "@/components/ui/skeleton"
 
-export function FilterCarouselListSkeleton({
-  hasTitle = true,
+export default function FilterCarouselListSkeleton({
+  title,
+  count = 4, // Default number of skeleton items to render
 }: {
-  hasTitle?: boolean
+  title?: string
+  count?: number
 }) {
-  const skeletonItems = Array.from({ length: 4 })
+  // Create an array based on the requested count to loop over
+  const skeletonItems = Array.from({ length: count })
 
   return (
-    <nav className="mx-auto mb-20 max-w-(--breakpoint-2xl) px-4">
-      {hasTitle && (
-        <Skeleton className="mx-auto my-10 h-10 w-48 animate-pulse rounded-md" />
+    <nav className="mx-auto mb-31 max-w-7xl animate-pulse px-4">
+      {/* Title Skeleton */}
+      {title ? (
+        <h3 className="mt-30 mb-10 text-center font-mono text-4xl text-black md:block dark:text-white">
+          {title}
+        </h3>
+      ) : (
+        // Neutral title line if no explicit text is provided but space needs to be kept
+        <Skeleton className="mx-auto mt-30 mb-10 h-10 w-48" />
       )}
 
-      <ul className="mx-auto flex h-full min-h-90 w-full flex-col items-center justify-center gap-15 pt-2 md:flex-row md:justify-normal md:gap-0 md:overflow-x-auto">
+      {/* Grid / Carousel List Skeleton Container */}
+      <ul className="mx-auto flex h-full w-full flex-col items-center justify-center gap-15 lg:flex-row lg:gap-0 lg:overflow-x-auto">
         {skeletonItems.map((_, i) => (
-          <li
-            key={`filter-skeleton-${i}`}
-            className="mx-5 block h-full w-full max-w-100 sm:max-w-120 md:max-w-70 md:min-w-60"
-          >
-            <Skeleton className="relative flex aspect-square animate-pulse items-center rounded-lg">
-              <Skeleton className="absolute right-[50%] bottom-[-15] h-8 w-24 translate-[50%] rounded" />
+          <li key={i} className="w-full min-w-50 shrink-0 p-2 lg:w-auto">
+            {/* Inner Card Item Wrapper */}
+            <Skeleton className="flex flex-col items-center gap-4 p-4">
+              {/* Image Circle/Square Placeholder */}
+              <Skeleton className="h-24 w-24 md:h-32 md:w-32" />
+
+              {/* Text Label Placeholder */}
+              <Skeleton className="h-5 w-28" />
             </Skeleton>
           </li>
         ))}

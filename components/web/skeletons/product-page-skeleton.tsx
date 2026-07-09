@@ -60,7 +60,7 @@ export function ProductPageSkeleton() {
           {[...Array(5)].map((_, i) => (
             <li
               key={i}
-              className="aspect-square w-full flex-none rounded-md bg-neutral-200 min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 dark:bg-neutral-800"
+              className="aspect-3/4 w-full flex-none rounded-md bg-neutral-200 min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 dark:bg-neutral-800"
             />
           ))}
         </ul>

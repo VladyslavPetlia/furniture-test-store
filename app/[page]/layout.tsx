@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         fallback={
           <div className="mx-8 max-w-2xl py-20 sm:mx-auto">
             <Skeleton className="mb-4 h-14 w-35" />
-            <Skeleton className="h-50 w-full" />
+            <Skeleton className="h-100 w-full" />
           </div>
         }
       >
