@@ -12,10 +12,10 @@ export default function Hero() {
             width={1335}
             height={751}
             quality={75}
-            priority // High priority preloading for LCP
+            priority
             fetchPriority="high"
             className="h-auto w-full max-w-500 object-cover"
-            sizes="(min-width: 1340px) 1335px, 100vw"
+            sizes="(min-width: 1340px) 1200px, 100vw"
           />
           <div className="absolute top-[60%] left-[50%] max-w-150 translate-x-[-50%] bg-[#46edd5] p-8 md:top-[50%] md:translate-x-0 md:translate-y-[-50%]">
             <h1 className="w-80 text-3xl font-bold text-primary uppercase md:text-4xl lg:w-115 lg:text-5xl xl:w-145 xl:text-6xl">
