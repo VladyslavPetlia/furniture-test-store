@@ -46,8 +46,10 @@ export async function InspirationCarousel() {
           opts={{
             align: "start",
             loop: true,
-            // Skip snappoint resizing math if slides aren't actively snapping
             skipSnaps: true,
+            // FIX: Prevents Embla from listening to dynamic mutation observers
+            // that check structural slide widths via JavaScript on initialization
+            watchSlides: false,
           }}
           className="w-full"
         >
