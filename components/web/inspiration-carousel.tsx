@@ -6,11 +6,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { shopifyImageUrl } from "@/lib/shopify/image"
 import { getCarouselImages } from "@/lib/shopify"
 import { InspirationCarouselItem } from "@/lib/shopify/types"
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card"
-import { Button, buttonVariants } from "../ui/button"
+import { buttonVariants } from "../ui/button"
 import Link from "next/link"
 import clsx from "clsx"
 
@@ -26,10 +25,10 @@ export async function InspirationCarousel() {
       <div className="flex flex-col gap-20 lg:flex-row lg:gap-15">
         <div className="flex flex-col justify-center">
           <h2 className="py-2 text-3xl font-bold text-primary">
-            Beautiful Room Insperation
+            Beautiful Room Inspiration
           </h2>
           <p className="text-neutral-800">
-            Our designer already made a lot of beautiful prototipe of rooms that
+            Our designer already made a lot of beautiful prototype of rooms that
             inspire you
           </p>
           <Link
@@ -42,40 +41,41 @@ export async function InspirationCarousel() {
             <div className="text-xl">Explore more</div>
           </Link>
         </div>
+
         <Carousel
           opts={{
             align: "start",
             loop: true,
+            // Skip snappoint resizing math if slides aren't actively snapping
+            skipSnaps: true,
           }}
           className="w-full"
         >
-          <CarouselContent className="">
+          <CarouselContent>
             {images.map((img: InspirationCarouselItem, index: number) => {
-              const optimizedSrc = shopifyImageUrl(img.url, 600)
+              const rawSrc = img.url
 
               return (
                 <CarouselItem key={index} className="basis-full md:basis-1/2">
                   <Card className="group overflow-hidden bg-primary pt-0 text-card-foreground shadow transition-all">
-                    {/* Image Container with strict 3:4 aspect ratio layout */}
                     <div className="relative aspect-3/4 w-full overflow-hidden bg-primary">
                       <Image
-                        src={optimizedSrc}
-                        alt={img.altText}
+                        src={rawSrc}
+                        alt={img.altText || "Inspiration room view"}
                         fill
                         quality={70}
-                        sizes="(min-width: 1280px) 300px, (min-width: 1024px) 33vw, (min-width: 768px) 430px, (min-width: 640px) 50vw, 100vw"
+                        sizes="(min-width: 1280px) 480px, (min-width: 768px) 40vw, 100vw"
                         className="object-cover transition-all group-hover:scale-105"
                         priority={index < 2}
                         loading={index >= 2 ? "lazy" : undefined}
                       />
                     </div>
 
-                    {/* Content details placed neatly beneath the image file box bounds */}
                     <CardHeader className="bg-primary">
                       <CardTitle className="text-2xl font-bold text-white">
                         {img.altText}
                       </CardTitle>
-                      <CardDescription className="min-h-4rem max-h-4rem mt-1 text-lg text-white">
+                      <CardDescription className="mt-1 max-h-16 min-h-16 text-lg text-white">
                         {img.titleField || "No look description available."}
                       </CardDescription>
                     </CardHeader>
@@ -85,7 +85,7 @@ export async function InspirationCarousel() {
             })}
           </CarouselContent>
 
-          <div className="">
+          <div>
             <CarouselPrevious className="-left-12" />
             <CarouselNext className="-right-12" />
           </div>
