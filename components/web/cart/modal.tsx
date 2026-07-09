@@ -3,14 +3,16 @@
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useCart } from "./cart-context"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { createCartAndSetCookie, redirectToCheckout } from "./actions"
 import OpenCart from "./open-cart"
 import { ShoppingCartIcon } from "lucide-react"
@@ -21,7 +23,8 @@ import Image from "next/image"
 import Link from "next/link"
 import Price from "../price"
 import { EditItemQuantityButton } from "./edit-item-quantity-button"
-import { CheckoutButton } from "./checkout-button"
+import { useFormStatus } from "react-dom"
+import LoadingDots from "../loading-dots"
 
 type MerchandiseSearchParams = {
   [key: string]: string
@@ -31,11 +34,7 @@ export default function CartModal() {
   const { cart, updateCartItem } = useCart()
   const quantityRef = useRef(cart?.totalQuantity)
 
-  // Force layout calculation math to defer until hydration completes
-  const [mounted, setMounted] = useState(false)
-
   useEffect(() => {
-    setMounted(true)
     if (!cart) {
       createCartAndSetCookie()
     }
@@ -51,18 +50,6 @@ export default function CartModal() {
     }
   }, [cart?.totalQuantity, quantityRef])
 
-  if (!mounted) {
-    return (
-      <Button
-        variant="outline"
-        className="relative cursor-pointer ring-1 ring-transparent hover:ring-primary"
-        disabled
-      >
-        <OpenCart quantity={cart?.totalQuantity} />
-      </Button>
-    )
-  }
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -73,15 +60,13 @@ export default function CartModal() {
           <OpenCart quantity={cart?.totalQuantity} />
         </Button>
       </SheetTrigger>
-
       <SheetContent className="px-4">
         <SheetHeader>
           <SheetTitle asChild>
             <p className="text-lg font-semibold">My Cart</p>
           </SheetTitle>
-          <SheetDescription className="sr-only">Shopping Cart</SheetDescription>
+          <SheetDescription className="sr-only">Shoping Cart</SheetDescription>
         </SheetHeader>
-
         {!cart || cart.lines.length === 0 ? (
           <div className="mt-20 flex w-full flex-col items-center justify-center overflow-hidden">
             <ShoppingCartIcon className="h-8" />
@@ -211,7 +196,25 @@ export default function CartModal() {
             </form>
           </div>
         )}
+        <SheetFooter>
+          <SheetClose></SheetClose>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
+  )
+}
+
+function CheckoutButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button
+      className="cursor-pointer px-8 py-6 text-lg"
+      variant="default"
+      type="submit"
+      disabled={pending}
+    >
+      {pending ? <LoadingDots className="bg-white" /> : "Proceed to Checkout"}
+    </Button>
   )
 }
