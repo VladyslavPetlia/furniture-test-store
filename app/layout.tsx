@@ -62,11 +62,7 @@ export default function RootLayout({
             <Suspense fallback={<Skeleton className="h-16" />}>
               <Navbar />
             </Suspense>
-            <main>
-              {children}
-              <Toaster closeButton />
-              <WelcomeToast />
-            </main>
+            <main>{children}</main>
           </CartProvider>
         </ThemeProvider>
       </body>
