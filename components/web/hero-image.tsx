@@ -19,12 +19,11 @@ export default function Hero() {
           />
           <div className="absolute top-[60%] left-[50%] max-w-150 translate-x-[-50%] bg-[#46edd5] p-8 md:top-[50%] md:translate-x-0 md:translate-y-[-50%]">
             <h1 className="w-80 text-3xl font-bold text-primary uppercase md:text-4xl lg:w-115 lg:text-5xl xl:w-145 xl:text-6xl">
-              Best Clothes That Matches Your Style
+              Your Home, Crafted to Perfection
             </h1>
             <p className="mb-6 w-85 text-neutral-800 lg:w-115 xl:w-135">
-              Browse through our diverse range of meticulously crafted
-              garments.Designed to bring out your individuality and cater to
-              your sense of style.
+              Discover beautifully designed, locally sourced furniture that
+              transforms any room into a personal sanctuary.
             </p>
             <div className="flex items-center">
               <MainButton text="Shop Now" />
