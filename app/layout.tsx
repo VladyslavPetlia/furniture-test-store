@@ -59,7 +59,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <CartProvider cartPromise={cart}>
-            <Suspense fallback={<Skeleton className="h-16 rounded-xl" />}>
+            <Suspense fallback={<Skeleton className="h-16" />}>
               <Navbar />
             </Suspense>
             <main>
