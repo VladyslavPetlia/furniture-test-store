@@ -1,6 +1,5 @@
 import Image from "next/image"
 import MainButton from "./main-button"
-import heroImg from "@/public/hero.webp"
 
 export default function Hero() {
   return (
@@ -9,8 +8,10 @@ export default function Hero() {
         <div className="relative h-full w-full pb-100 md:pb-0">
           <Image
             alt="Decorated room image"
-            src={heroImg}
-            quality={70}
+            src="/hero.webp"
+            width={1335}
+            height={751}
+            quality={65}
             priority
             fetchPriority="high"
             className="h-auto w-full max-w-500 object-cover"
