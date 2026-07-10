@@ -56,7 +56,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          // disableTransitionOnChange={false} // 👈 Change this from true to false
+          disableTransitionOnChange={false}
         >
           <CartProvider cartPromise={cart}>
             <Suspense fallback={<Skeleton className="h-16 rounded-xl" />}>
