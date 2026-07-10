@@ -29,15 +29,6 @@ export const metadata: Metadata = {
     follow: true,
     index: true,
   },
-  // This explicitly pushes the image download to the front of the browser queue
-  other: {
-    rel: "preload",
-    as: "image",
-    href: "/_next/image?url=%2Fhero.webp&w=768&q=70",
-    imagesrcset:
-      "/_next/image?url=%2Fhero.webp&w=640&q=70 640w, /_next/image?url=%2Fhero.webp&w=768&q=70 768w, /_next/image?url=%2Fhero.webp&w=1200&q=70 1200w",
-    imagesizes: "(min-width: 1340px) 1200px, 100vw",
-  },
 }
 
 export default function RootLayout({
