@@ -44,31 +44,33 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
             Browse categories and search products
           </SheetDescription>
         </SheetHeader>
-        <div className="grid flex-1 auto-rows-min gap-6 px-4">
-          <div className="mt-14 mb-4 w-full">
-            <Suspense fallback={<SearchSkeleton />}>
-              <Search />
-            </Suspense>
+        {open && (
+          <div className="grid flex-1 auto-rows-min gap-6 px-4">
+            <div className="mt-14 mb-4 w-full">
+              <Suspense fallback={<SearchSkeleton />}>
+                <Search />
+              </Suspense>
+            </div>
+            {menu.length ? (
+              <ul className="flex w-full flex-col">
+                {menu.map((item: Menu) => (
+                  <SheetClose asChild key={item.path}>
+                    <Link
+                      href={item.path}
+                      prefetch={true}
+                      className={clsx(
+                        "mb-4 flex h-11 px-4 text-lg font-medium ring-1 ring-transparent hover:ring-primary",
+                        buttonVariants({ variant: "secondary" })
+                      )}
+                    >
+                      {item.title}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </ul>
+            ) : null}
           </div>
-          {menu.length ? (
-            <ul className="flex w-full flex-col">
-              {menu.map((item: Menu) => (
-                <SheetClose asChild key={item.path}>
-                  <Link
-                    href={item.path}
-                    prefetch={true}
-                    className={clsx(
-                      "mb-4 flex h-11 px-4 text-lg font-medium ring-1 ring-transparent hover:ring-primary",
-                      buttonVariants({ variant: "secondary" })
-                    )}
-                  >
-                    {item.title}
-                  </Link>
-                </SheetClose>
-              ))}
-            </ul>
-          ) : null}
-        </div>
+        )}
       </SheetContent>
     </Sheet>
   )

@@ -32,8 +32,8 @@ export default function Search() {
           <SearchIcon aria-hidden="true" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-max-[550px] w-full min-w-80 p-0 lg:w-80 xl:w-full">
-        <Form action="/search" className="w-full">
+      <PopoverContent className="w-max-[550px] w-full min-w-80 p-2.5 lg:w-80 xl:w-full">
+        <Form action="/search" className="relative w-full">
           <Field className="max-w-md">
             <InputGroup>
               <InputGroupInput
