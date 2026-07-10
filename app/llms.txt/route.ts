@@ -1,9 +1,6 @@
 import { getCollections, getPages, getProducts } from "@/lib/shopify"
 import { baseUrl, validateEnvironmentVariables } from "@/lib/utils"
 
-// Matches Next.js Commerce cache behavior
-export const dynamic = "force-dynamic"
-
 export async function GET() {
   validateEnvironmentVariables()
 
@@ -33,7 +30,6 @@ export async function GET() {
   if (collections.length > 0) {
     markdown += `\n## Product Collections\n\n`
     collections.forEach((collection) => {
-      // Uses the pre-mapped next.js commerce path automatically!
       markdown += `- [${collection.title}](${baseUrl}${collection.path}): Curated collection catalog.\n`
     })
   }
@@ -50,7 +46,7 @@ export async function GET() {
   return new Response(markdown, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      "Cache-Control": "no-store, must-revalidate", // Guarantees live dynamic fetches without compiler configs
     },
   })
 }
