@@ -11,7 +11,7 @@ export default function Hero() {
             src="/hero.webp"
             width={1335}
             height={751}
-            quality={60}
+            quality={75}
             priority
             fetchPriority="high"
             className="h-auto w-full max-w-500 object-cover"

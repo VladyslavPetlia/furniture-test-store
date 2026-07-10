@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [60, 65, 70, 75],
+    qualities: [70, 75],
     // Tailwind default breakpoints: sm(640), md(768), lg(1024), xl(1280), 2xl(1536)
     deviceSizes: [640, 768, 1024, 1280, 1335, 1536],
     // Fills in smaller standard size increments for small UI grid layouts
