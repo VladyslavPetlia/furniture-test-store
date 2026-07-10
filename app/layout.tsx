@@ -4,10 +4,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { baseUrl, cn } from "@/lib/utils"
 import { Metadata } from "next"
 import { Navbar } from "@/components/web/layout/navbar"
-import { WelcomeToast } from "@/components/web/welcome-toast"
 import { CartProvider } from "@/components/web/cart/cart-context"
 import { getCart } from "@/lib/shopify"
-import { Toaster } from "sonner"
 import { Suspense } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 
@@ -21,14 +19,24 @@ const fontMono = Aboreto({
 
 const { SITE_NAME } = process.env
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: SITE_NAME!,
+    template: `%s | ${SITE_NAME}`,
   },
   robots: {
     follow: true,
     index: true,
+  },
+  // This explicitly pushes the image download to the front of the browser queue
+  other: {
+    rel: "preload",
+    as: "image",
+    href: "/_next/image?url=%2Fhero.webp&w=768&q=70",
+    imagesrcset:
+      "/_next/image?url=%2Fhero.webp&w=640&q=70 640w, /_next/image?url=%2Fhero.webp&w=768&q=70 768w, /_next/image?url=%2Fhero.webp&w=1200&q=70 1200w",
+    imagesizes: "(min-width: 1340px) 1200px, 100vw",
   },
 }
 
@@ -37,7 +45,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // Don't await the fetch, pass the Promise to the context provider
   const cart = getCart()
 
   return (
